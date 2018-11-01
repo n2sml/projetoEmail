@@ -1,0 +1,29 @@
+div{
+    font:Verdana, serif;
+}
+
+#meuForm{
+    margin-top:2%;
+    margin-left:5%;
+    display: none;
+}
+
+#minhaLista{
+    margin-top:2%;
+    margin-left:5%;
+    display: none;
+}
+
+#myNavbar{
+    position: fixed;
+}
+
+
+#meioDaPag{
+	padding: 8% 10%;
+}
+
+.nav-link:hover{
+    color: lightgreen !important;
+}
+

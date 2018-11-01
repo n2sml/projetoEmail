@@ -1,0 +1,4 @@
+#ConteudoMostra { position: absolute;bottom: 0;width: 100%;z-index: 100;}
+#abreMenu {color: #ececec;background: #333;cursor: pointer;font-size: 26px;text-decoration: none;}
+#conteudo {background: #333;width: 100%;color: #CCCCCC;text-align: center;font-size: 20px;}
+#ConteudoMostra #ConteudoOculto {display: none;}
