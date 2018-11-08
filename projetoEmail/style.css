@@ -1,0 +1,29 @@
+@media (min-width: 400px) {
+    body {
+        background: red;
+    }
+}
+
+@media (min-width: 500px) {
+    body {
+        background: green;
+    }
+}
+
+@media (min-width: 600px) {
+    body {
+        background: pink;
+    }
+}
+
+#loginCard{    
+    margin-top: 15%;    
+}
+
+#meusBotoes{
+    padding-top: 10%;
+}
+
+body {
+    
+}
