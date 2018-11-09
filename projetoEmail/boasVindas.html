@@ -3,42 +3,86 @@
 
 <head>
   <meta charset="utf-8">
-
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <title>tooFast</title>
+  <title>Bem-vindo!</title>
 </head>
 
 <body>
-  <div class = "container">
-        <div class="card" id = "loginCard">
-                <div class="card-body">
-                  <h2 class="card-title">Bem-Vindo ao tooFast!</h2>                  
-                  <p class="card-text">Um projeto front-end para sistema de gerenciamento de e-mails</p>
-                  <p class="card-text">Criado por Nícolas Miguel, IFPE Campus Recife</p>
-                  <div id = "meusBotoes">
-                       <button type="button" class="btn btn-primary btn-sm">Login</button>
-                  <button type="button" class="btn btn-outline-secondary btn-sm">Não possui uma conta?</button>
-                  </div>
-                 
-                    
-                </div>
-              </div>
-    
+  <div class="container">
+    <div id="conteudoPagina" fade>
+
+      <div class="row">
+        <div class="col">
+          <h1 class="title">tooFast. Rápido como uma flecha.</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div id="texto">
+            <span class="lead">Um projeto front-end para sistema de gerenciamento de e-mails.</p>
+              <span class="lead">Receba e envie mensagens convencionais e instantâneas, organize-as em pastas e
+                gerencie
+                seus contatos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div id="botoes">
+            <button type="button" class="btn btn-secondary btn-sm">Login</button>
+            <button type="button" class="btn btn-dark btn-sm">Não possui uma conta?</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
+</div>
 
 
-
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-    crossorigin="anonymous"></script>
-  
+    </div>
+  </div>
 </body>
+
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+  crossorigin="anonymous"></script>
+
+</body>
+
 </html>
