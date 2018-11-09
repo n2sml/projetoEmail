@@ -1,5 +1,7 @@
 
 h1{
+	color: gray;
+	text-align: center;
     font-size: 70px;
     font-family: 'Montserrat', sans-serif;
     
@@ -14,10 +16,13 @@ h1{
 }
 
 body {
-    background-image: url("carbono3.png");   
+    background: url("carbono3.png");   
     margin-top: 5em;       
     transition:all 0.3s ease;
-    margin-bottom: 3em; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* e agora a regra de ouro que fará a imagem ocupar todo o viewport */
+    background-size: 100% 100%;
 }
 
 #texto{
@@ -25,16 +30,21 @@ body {
     margin-bottom: 10%;
 }
 
-button{   
-    margin-left: 5px;
-    margin-right: 5px;
+button{
+	margin-left: 10px;
+    margin-right: 10px;
+	margin-bottom : 15px;
+}
+
+#botoes{       
+    
     opacity: 0.7;
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
 }
 
-button:hover{
-    
+#loginBtn:hover{
+	
     box-shadow: 
     3px 3px rgb(63, 63, 63);
     opacity:1;
@@ -43,10 +53,32 @@ button:hover{
         transform: scale(1.15);
 }
 
-.modal-body{
-    display:none;
+#cadastroBtn:hover{
+    box-shadow: 
+    3px 3px rgb(63, 63, 63);
+    opacity:1;
+    -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        transform: scale(1.15);
+}
+
+form-group{
+	margin-top: 5%;
+    margin-bottom: 10%;
 }
 
 #botoes{
     margin: auto;
 }
+
+#sobreMim{
+   margin: auto;
+   color: rgb(170, 170, 170);
+   margin-top: 5%;
+   margin-bottom: 10%;
+}
+
+#sobreMim:hover{
+    color: rgb(100, 100, 100);
+   
+ }
