@@ -4,200 +4,185 @@
 <head>
   <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <title>Bem-vindo!</title>
+  <title>tooFast</title>
 </head>
 
 <body>
   <div class="container">
+    <div id="topo"></div>
     <div id="conteudoPagina" fade>
-
       <div class="col">
         <div class="row">
-          <h1 class="title">
-            <b>tooFast. Rápido como uma flecha.</b>
-          </h1>
+          <h1 class="animated zoomIn">tooFast. Rápido como uma flecha.</h1>
+
         </div>
-
-
-
         <div class="row">
           <div id="texto">
             <span class="lead">Um projeto front-end para sistema de gerenciamento de e-mails.</p>
-              <span class="lead">Receba e envie mensagens convencionais e instantâneas, organize-as em pastas e gerencie seus contatos.</p>
+              <span class="lead">Receba e envie mensagens convencionais e instantâneas, organize-as em pastas e
+                gerencie seus contatos.</p>
+
+
           </div>
         </div>
-
-
 
         <div class="row">
           <div id="botoes">
             <button type="button" id="loginBtn" data-toggle="modal" data-target="#modalLogin" class="btn btn-secondary btn-lg">Login</button>
-            <button type="button" id="cadastroBtn" data-toggle="modal" data-target="#modalCadastro" class="btn btn-dark btn-lg">Não possui uma conta?</button>
+            <button type="button" id="cadastroBtn" data-toggle="modal" data-target="#modalCadastro" class="btn btn-dark btn-lg">Não
+              possui uma conta?</button>
           </div>
         </div>
       </div>
 
-      <div class = "row">
-          <a id = "sobreMim" href="url">Sobre mim</a>.
+      <div class="row">
+        <a id="sobreMim" href="url">Sobre mim</a>.
       </div>
-
-
-      </div>
-      
-      
-
-
-
-      <!-- Modal 1-->
-      <div id="modalLogin" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-
-              <h4 class="modal-title">Faça Login.</h4>
-            </div>
-            <form class="form-horizontal">
-              <fieldset>
-
-
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col control-label" for="textinput">Insira seu e-mail: </label>
-                  <div class="col">
-                    <input id="textinput" name="textinput" type="text" placeholder="E-mail" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Password input-->
-                <div class="form-group">
-                  <label class="col control-label" for="passwordinput">Insira sua senha: </label>
-                  <div class="col">
-                    <input id="passwordinput" name="passwordinput" type="password" placeholder="Senha" class="form-control input-md">
-
-                  </div>
-                </div>
-
-              </fieldset>
-            </form>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-dark" data-dismiss="modal">Enviar</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <!-- Modal 2-->
-
-      <div id="modalCadastro" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-
-              <h4 class="modal-title">Crie sua conta agora.</h4>
-            </div>
-            <form class="form-horizontal">
-              <fieldset>
-
-
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col control-label" for="textinput">Insira seu primeiro nome:</label>
-                  <div class="col">
-                    <input id="textinput" name="textinput" type="text" placeholder="Nome" class="form-control input-md">
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col control-label" for="textinput">Insira seu sobrenome: </label>
-                  <div class="col">
-                    <input id="textinput" name="textinput" type="text" placeholder="Sobrenome" class="form-control input-md">
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col control-label" for="textinput">Insira um endereço de e-mail válido: </label>
-                  <div class="col">
-                    <input id="textinput" name="textinput" type="text" placeholder="Endereço de e-mail" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Password input-->
-                <div class="form-group">
-                  <label class="col control-label" for="passwordinput">Digite sua senha: </label>
-                  <div class="col">
-                    <input id="passwordinput" name="passwordinput" type="password" placeholder="Senha" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Password input-->
-                <div class="form-group">
-                  <label class="col control-label" for="passwordinput">Repita sua senha: </label>
-                  <div class="col">
-                    <input id="passwordinput" name="passwordinput" type="password" placeholder="Senha" class="form-control input-md">
-
-                  </div>
-                </div>
-
-                <!-- Multiple Checkboxes (inline) -->
-                <div class="form-group">
-
-                  <div class="col">
-                    <label class="checkbox-inline" for="checkboxes-0">
-                      <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1"> Li e concordo com os
-                      <a href="url">termos de uso</a>.
-                    </label>
-
-                  </div>
-                </div>
-
-
-              </fieldset>
-            </form>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-dark" data-dismiss="modal">Enviar</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
     </div>
+
+
+    <!-- Modal LOGIN-->
+    <div id="modalLogin" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">Faça Login.</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <form class="form-horizontal">
+            <fieldset>
+              <div class="form-group">
+                <label class="col control-label" for="textinput">Insira seu e-mail: </label>
+                <div class="col">
+                  <input id="textinput" name="textinput" type="text" placeholder="E-mail" class="form-control input-md"
+                    required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col control-label" for="passwordinput">Insira sua senha: </label>
+                <div class="col">
+                  <input id="passwordinput" name="passwordinput" type="password" placeholder="Senha" class="form-control input-md"
+                    required>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-dark" data-dismiss="modal"></input>
+                <input type="reset" class="btn btn-default" data-dismiss="modal"></input>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal CADASTRO-->
+    <div id="modalCadastro" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+            <h4 class="modal-title">Crie sua conta agora.</h4>
+            <button type="button" id="fecharModal" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!--Começando o form: -->
+          <form class="form-horizontal" id="cadastro">
+            <fieldset>
+              <div class="form-group">
+                <label class="col control-label" for="textinput">Insira seu primeiro nome:</label>
+                <div class="col">
+                  <input id="nome" name="textinput" type="text" placeholder="Nome" class="form-control input-md"
+                    required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col control-label" for="textinput">Insira seu sobrenome: </label>
+                <div class="col">
+                  <input id="sobrenome" name="textinput" type="text" placeholder="Sobrenome" class="form-control input-md"
+                    required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col control-label" for="textinput">Insira um endereço de e-mail válido: </label>
+                <div class="col">
+                  <input id="username" name="textinput" type="text" placeholder="Endereço de e-mail" class="form-control input-md"
+                    required>
+                  <small id="emailHelp" class="form-text text-muted"></small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col control-label" for="passwordinput">Digite sua senha: </label>
+                <div class="col" id="campoSenha">
+                  <input id="senha" name="passwordinput" required type="password" placeholder="Senha" class="form-control input-md"
+                    required>
+                  <small id = "statusString" class="form-text text-muted"></small>
+                  <div class="progress" id="barraForca" hidden></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col control-label" for="passwordinput">Repita sua senha: </label>
+                <div class="col">
+                  <input id="senharepeat" name="passwordinput" type="password" placeholder="Senha" class="form-control input-md"
+                    required>
+                  <span id="erro" style="color: red">X</span>
+                  <span id="acerto" style="color: green">V</span></br>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col">
+                  <label class="checkbox-inline" for="checkboxes-0">
+                    <input type="checkbox" name="checkboxes" required id="checkboxes-0" value="1"> Li e concordo com os
+                    <a href="url">termos de uso</a>.
+                  </label>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-dark" id="submitBtn"></input>
+                <input type="reset" class="btn btn-default"></input>
+              </div>
+            </fieldset>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </body>
 
 
 
-
-
-
-<!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
   crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
   crossorigin="anonymous"></script>
+<script src="myJs.js"></script>
 
 </body>
 
