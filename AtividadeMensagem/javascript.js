@@ -488,6 +488,12 @@ function showCaixas(idConta) {
 
     nav.appendChild(ul);
     col1.appendChild(nav);
+
+    let accordion = document.createElement("div");
+    accordion.setAttribute("class", "accordion");
+    accordion.setAttribute("id", "accordion");
+
+    col1.appendChild(accordion);
 }
 
 
@@ -530,20 +536,101 @@ function showMensagens(idConta, idCaixa) {
     xhttp.send();
     let retorno = xhttp.responseText;
     //retorno = JSON.parse(retorno);
-    console.log(retorno);
+    console.log(JSON.stringify(retorno));
     let col1 = document.getElementById('col1');
 
     let div = document.createElement("div");
     div.setAttribute("class", "list-group");
     console.log("tamanho do retorno " + retorno.length);
-    retorno.forEach(function funcao(x) {
-        let tag = document.createElement("a");
-        tag.setAttribute("href", "#");
-        tag.setAttribute("class", "list-group-item list-group-item-action");
 
-    })
+    let accordion = document.getElementById("accordion");
+    accordion.innerHTML = "";
 
-    col1.appendChild(div);
+    //Começa aqui:
+    
+
+
+
+    for (let c = 0; c < retorno.length; c++) {
+        let card = document.createElement("div");
+        card.setAttribute("class", "card");
+
+        let cardHeader = document.createElement("div");
+        cardHeader.setAttribute("class", "card-Header");
+
+        let mb = document.createElement("h5");
+        mb.setAttribute("class", "mb-0");
+
+        let btn = document.createElement("button");
+        btn.setAttribute("class", "btn btn-dark");
+        btn.setAttribute("type", "button");
+        btn.setAttribute("data-toggle", "collapse");
+        //btn.setAttribute("data-target", INSIRA O ID DA DIV AQUI COM O SHARP);
+        btn.setAttribute("aria-expanded", "true");
+        //btn.setAttribute("aria-controls", INSIRA O ID DA DIV AQUI SEM O SHARP);
+        btn.innerHTML = c.assunto;
+
+        mb.appendChild(btn);
+        cardHeader.appendChild(mb);
+        card.appendChild(cardHeader);
+        accordion.appendChild(card);
+        //http://www.henriquesantos.pro.br:8080/api/email/mensagens_email/${tokenString}/mensagem/${c.id}
+        
+    }
+
+
+	/*
+	
+	<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+	
+	*/
+
+
+    //col1.appendChild(div);
 
 }
 
