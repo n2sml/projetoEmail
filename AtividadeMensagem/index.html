@@ -16,42 +16,52 @@
 
   <div id="topo">
     <!-- A NAVBAR-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between" id="navbar">
-      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+    <nav class="navbar navbar-nav navbar-expand-md navbar-light bg-light" id="navbar">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <span class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              Suas Contas
-            </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" id="suasContas">
+              Suas contas
+            </a>
+            <div class="dropdown-menu pull-right" aria-labelledby="navbarDropdown">
               <div id="navbarItens">
               </div>
               <div class="dropdown-divider"></div>
               <a class="nav-link" href="#" id="novaConta"><b>Crie uma nova Conta</b></a>
             </div>
           </li>
+        </ul>
+
+        <span class="navbar-text" id="bemVindo">
+        </span>
+
       </div>
     </nav>
   </div>
 
 
-  <div class="container">
+  <div class="container-fluid">
+
+
+
     <div id="conteudoPagina" fade>
-      <div class="col"></div>
-      <div class="row">
-        <h1 class="animated zoomIn">tooFast. Rápido como uma flecha.</h1>
-
-      </div>
-      <div class="row">
-        <div id="texto">
-          <span class="lead">Um projeto front-end para sistema de gerenciamento de e-mails.</p>
-            <span class="lead">Receba e envie mensagens convencionais e instantâneas, organize-as em pastas e
-              gerencie seus contatos.</p>
-
-
+      <div class="col">
+        <div class="row">
+          <h1 class="animated zoomIn">tooFast. Rápido como uma flecha.</h1>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <div id="texto" align="center">
+            <span class="lead"><b>Um projeto front-end para sistema de gerenciamento de e-mails.</p>
+              <span class="lead">Receba e envie mensagens convencionais e instantâneas, organize-as em pastas e
+                gerencie seus contatos.</p>
+
+          </div>
+        </div>
+      </div>
+
 
       <div class="row">
         <div id="botoes">
@@ -151,6 +161,46 @@
     </div>
   </div>
 
+  <!-- Modal Lorem Ipsum -->
+  <div class="modal fade" id="loremIpsum" tabindex="-1" role="dialog" aria-labelledby="loremIpsumLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="loremIpsumLabel">Termos de Uso</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis, lacus a efficitur cursus, ex dui
+          sagittis nisl, at aliquam urna leo at velit. Integer iaculis nulla ut turpis congue euismod. Vestibulum sit
+          amet eleifend purus. Cras euismod vestibulum vulputate. Morbi dapibus mi vel eros malesuada pellentesque.
+          Aenean vel odio congue, suscipit ante id, pretium lectus. Mauris eget sem non tellus volutpat porttitor sit
+          amet in purus. Ut et eleifend tellus. Curabitur tincidunt ex purus, vitae luctus orci hendrerit sed.
+
+          Aliquam risus mauris, tincidunt vel lorem non, sollicitudin tincidunt lorem. Aliquam vel lacus turpis. Proin
+          lobortis vitae ligula vitae faucibus. Nunc a enim lectus. Cras bibendum pretium nisl, ac lacinia elit
+          pulvinar sed. In id lobortis neque. Cras cursus diam nec enim sagittis, id facilisis quam semper. Nulla
+          venenatis tortor nunc, et aliquam purus molestie et. Integer nisi leo, accumsan nec posuere sed, rhoncus vel
+          mauris. Sed tincidunt quis nunc nec finibus. Suspendisse fermentum, purus a feugiat cursus, dui dui egestas
+          mauris, sit amet dapibus diam ipsum in felis. Sed lacinia ac nibh et sagittis.
+
+
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal falha no login-->
+  <div class="modal fade" id="falhaLogin" tabindex="-1" role="dialog" aria-labelledby="falhaLoginLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          Usuário ou senha incorretos.
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- Modal CADASTRO-->
@@ -227,8 +277,8 @@
               <div class="col">
                 <input id="senhaCadastroRepeat" name="passwordinput" type="password" placeholder="Senha" class="form-control input-md"
                   required>
-                <span id="erro" style="color: red">X</span>
-                <span id="acerto" style="color: green">V</span></br>
+                <span id="erro" style="color: red; display: none;">Senhas não Coincidem</span>
+                <span id="acerto" style="color: green; display: none;">Senhas iguais</span></br>
               </div>
             </div>
 
@@ -236,7 +286,7 @@
               <div class="col">
                 <label class="checkbox-inline" for="checkboxes-0">
                   <input type="checkbox" name="checkboxes" required id="checkboxes-0" value="1"> Li e concordo com os
-                  <a href="url">termos de uso</a>.
+                  <a id="loremIpsumLink">termos de uso</a>.
                 </label>
               </div>
             </div>
@@ -253,70 +303,104 @@
   </div>
 
 
+  <!--Modal que é exibido ao apagar um email.--> 
+
+  <div class="modal fade" id="emailDelete" tabindex="-1" role="dialog" aria-labelledby="emailDeletadoModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            E-mail deletado com sucesso.
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Modal que é exibido ao enviar email com sucesso.--> 
+  <div class="modal fade" id="emailEnviado" tabindex="-1" role="dialog" aria-labelledby="emailEnviado" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            E-mail enviado com sucesso.
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   <!-- Modal Para Enviar E-mail -->
   <!-- selectPara, selectCC, selectCCo, assuntoEmail, conteudoEmail-->
   <div id="enviarEmail" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Enviar e-mail</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-  
-          <form class="form-horizontal" id="formEnviarEmail">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Enviar e-mail</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class = "container">
+          
+
+        <form class="form" id="formEnviarEmail">
             <fieldset>
-              <div class="form-group">
-                <label class="col control-label" for="textinput">Para: </label>
-                <div class="col">
-                    <select class="form-control form control-sm" id="selectPara">
-                    </select>
+              <div class="col-xs-2 mb-2">
+                <div class="input-group input-group-sm mb-3" style="position: relative;">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Para</label>
+                  </div>
+                  <select class="custom-select" id="selectPara">
+                    <option value=""> <i>-- Selecione um endereço de email: --</i></option>
+                  </select>
                 </div>
               </div>
-
-              <div class="form-group">
-                  <label class="col control-label" for="textinput">CC: </label>
-                  <div class="col">
-                      <select class="form-control form control-sm" id="selectCC">
-                          <option value=""> </option>
-                      </select>
+              <div class="col-xs-2">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">CC</label>
                   </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col control-label" for="textinput">CCo: </label>
-                    <div class="col">
-                        <select class="form-control form control-sm" id="selectCCo">
-                            <option value=""> </option>
-                        </select>
-                    </div>
-                  </div>
-
-  
-              <div class="form-group">
-                <label class="col control-label" for="passwordinput">Assunto: </label>
-                <div class="col">
-                  <input id="assuntoEmail" type="text" placeholder="Assunto" class="form-control input-md"
-                    required>
+                  <select class="custom-select" id="selectCC">
+                    <option value=""> </option>
+                  </select>
                 </div>
               </div>
-
-              <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Mensagem: </label>
-                  <textarea class="form-control" id="conteudoEmail" rows="3"></textarea>
+              <div class="col-xs-2">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">CCo</label>
+                  </div>
+                  <select class="custom-select" id="selectCCo">
+                    <option value=""> </option>
+                  </select>
                 </div>
-  
-              <div class="modal-footer">
-                <input type="submit" class="btn btn-dark"></input>
-                <input type="reset" class="btn btn-default"></input>
               </div>
             </fieldset>
+  
+  
+            <div class="form-group">
+              <label class="col control-label" for="passwordinput">Assunto: </label>
+              <div class="col">
+                <input id="assuntoEmail" type="text" placeholder="Assunto" class="form-control input-md" required>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Mensagem: </label>
+              <textarea class="form-control" id="conteudoEmail" rows="3"></textarea>
+            </div>
+  
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-dark"></input>
+            </div>
+  
           </form>
         </div>
+
       </div>
     </div>
+  </div>
+
 
 
 </body>

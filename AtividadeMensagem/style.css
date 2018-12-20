@@ -1,11 +1,19 @@
 h1{
-    margin-top: 5em;
+    margin-top: 1em !important;
     margin: auto;
-	color:gray;
+	color: black;
 	text-align: center;
     font-size: 5em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 1000;
+}
+
+h3{
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
+    margin: auto;
+	color: black;
+	text-align: center;
 }
 
 #navbar{
@@ -15,13 +23,13 @@ h1{
 #texto{
     margin-top: 5em;
     margin-bottom: 3em;
-    color: azure;
+    color: #555;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
 
 body {
-    background: url("carbono3.png");   
+    background: url("cinza.jpg");   
     transition:all 0.3s ease;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -32,12 +40,6 @@ body {
 #texto{
     margin-top: 5%;
     margin-bottom: 10%;
-}
-
-button{
-	margin-left: 10px;
-    margin-right: 10px;
-	margin-bottom : 15px;
 }
 
 #botoes{       
@@ -136,3 +138,62 @@ form-group{
     background: #555; 
 }
 
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity:0;
+    transform: translateY(-50px);
+    transition:.5s ease all;
+}
+
+.dropdown-menu.show {
+    display: block;
+    visibility: visible;
+    opacity:1;
+    transform: translateY(0px);
+    transition:.5s ease all;
+}
+
+
+#botaoEnviarEmail {
+    background:url('send.png');
+    position: fixed !important;
+    bottom:10px;
+    right:10px;
+    z-index: 1;
+}
+
+#botaoEnviarEmail:hover{
+    opacity:1;
+    -webkit-transform: scale(1.6);
+        -ms-transform: scale(1.6);
+        transform: scale(1.5);
+        transition:.5s ease all;
+}
+
+
+    
+.page-item{
+    margin-top: 5%;
+
+}
+
+#listinha{
+    width : 650px;
+    margin:auto;
+    margin-bottom: 5%;
+}
+
+#caixasEmail{  
+    margin:auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+
+#botaoDeletarMensagem{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+    z-index: 999;
+}

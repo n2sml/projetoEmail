@@ -3,6 +3,7 @@ var fecharModal = document.getElementById("fecharModal");
 var modalCadastro = document.getElementById("modalCadastro");
 var formCadastro = document.getElementById("cadastro");
 var contaSelecionada;
+var stringContaSelecionada;
 
 /*
 Cadastrar Usuário:
@@ -59,7 +60,7 @@ var listener =
                 var modalBody = document.createElement("div");
                 modalBody.setAttribute("class", "modal-body");
 
-                modalBody.innerHTML = `E-mail <strong>${emailEmUso}</strong> cadastrado com sucesso.`
+                modalBody.innerHTML = `E-mail <strong>${obj.nome}</strong> cadastrado com sucesso.`
 
                 modalContent.appendChild(modalBody);
                 modalDialog.appendChild(modalContent);
@@ -102,6 +103,7 @@ var acerto = document.getElementById("acerto");
 
 
 function verificarSenhas() {
+
     if (senha1.value.length < 4) {
 
         senha1.focus();
@@ -314,13 +316,6 @@ function criarConta() {
                 }, 2500);
 
 
-
-                /*
-                <div class="alert alert-danger" role="alert">
-                This is a danger alert—check it out!      
-                </div>
-                */
-
                 $('#modalCriado').modal();
 
                 let tokenString = localStorage.getItem("token", token.token);
@@ -421,21 +416,48 @@ let formListener = formLogin.addEventListener("submit", function (e) {
 
             var navbarItens = document.getElementById("navbarItens");
 
+            let bemVindo = document.getElementById("bemVindo");
+            bemVindo.innerHTML = `Bem-vindo, <b>${obj.login}</b>.`
+
+            let col = document.getElementById("col1");
+            //<h1 class="animated zoomIn">tooFast. Rápido como uma flecha.</h1>
+            col.innerHTML = `<h3 class = "animated zoomIn" align="center"> <b>${obj.login}</b>, escolha uma conta:</h4>`;
+
+            let listGroup = document.createElement("ul");
+            listGroup.setAttribute("class", "list-group");
+            listGroup.setAttribute("id", "listinha");
+
+
             for (var c = 0; c < retorno.length; c++) {
+                //criando para a caixinha:
                 var tag = document.createElement("a");
                 tag.setAttribute("class", "dropdown-item");
                 tag.setAttribute("href", "#");
+                tag.setAttribute("id", `conta${retorno[c].id}`);
                 tag.setAttribute("onclick", `showCaixas(${retorno[c].id})`);
 
-                tag.innerHTML = retorno[c].endereco;
 
+                tag.innerHTML = retorno[c].endereco;
                 navbarItens.appendChild(tag);
+
+                //Criando os cards da col1:
+                let listGroupItem = document.createElement("li");
+                listGroupItem.setAttribute("class", "list-group-item py-1");
+                listGroupItem.innerHTML = retorno[c].endereco;
+                listGroupItem.setAttribute("onclick", `showCaixas(${retorno[c].id})`);
+                listGroup.appendChild(listGroupItem);
+
             }
+            col.appendChild(listGroup);
+
+
+
+
 
 
         }
         else if (xhr.readyState == XMLHttpRequest.DONE && xhr.status != 200) {
-            console.log('não logou!');
+            exibirFalhaLogin();
         }
     }
 
@@ -450,6 +472,11 @@ novaConta.addEventListener("click", function (e) {
 })
 
 function showCaixas(idConta) {
+    /*
+    let atual = document.getElementById("suasContas");                
+    atual.innerHTML = `<b>${stringContaSelecionada}</b>`;   
+    */
+
     contaSelecionada = idConta;
     col1.innerHTML = "";
     var tokenString = localStorage.getItem("token", token.token);
@@ -464,21 +491,40 @@ function showCaixas(idConta) {
     let ul = document.createElement("ul");
     ul.setAttribute("class", "pagination");
 
-    let btn = document.createElement("button");
+    /**
+     *  <!-- Botão de enviar email -->
+      <div style = "display : none">
+          <a href= "#">
+            <img src="send.png" width="50px" height="50px" alt="Envie um E-mail." />
+          </a>
+        </div>
+     */
+
+    let btn = document.createElement("img");
     btn.setAttribute("onclick", "botaoEnviar()");
-    btn.setAttribute("type", "button");
-    btn.setAttribute("class", "btn btn-dark");
-    btn.innerHTML = "Enviar um E-Mail";
+    btn.setAttribute("title", "Enviar E-mail");
+    btn.setAttribute("type", "image");
+    btn.setAttribute("src", "send.png");
+    btn.setAttribute("width", "5%");
+    btn.setAttribute("width", "5%");
+    btn.setAttribute("id", "botaoEnviarEmail");
     col1.appendChild(btn);
 
+
+    let li = document.createElement("div");
+    li.setAttribute("class", "btn-group");
+    li.setAttribute("role", "group");
     retorno.forEach(function funcao(x) {
 
-        let li = document.createElement("li");
-        li.setAttribute("class", "page-item");
 
-        let tag = document.createElement("a");
-        tag.setAttribute("class", "page-link");
+
+        let tag = document.createElement("button");
+        tag.setAttribute("id", "caixasEmail");
+        tag.setAttribute("type", "button");
+        tag.setAttribute("class", "btn btn-secondary");
+        tag.setAttribute("aria-pressed", "true");
         tag.setAttribute("onclick", `showMensagens(${idConta}, ${x.id})`);
+
         tag.innerHTML = x.nome;
 
         li.appendChild(tag);
@@ -493,9 +539,11 @@ function showCaixas(idConta) {
     accordion.setAttribute("class", "accordion");
     accordion.setAttribute("id", "accordion");
 
-    col1.appendChild(accordion);
-}
 
+    col1.appendChild(accordion);
+    console.log("idConta = " + idConta);
+    showMensagens(idConta, retorno[0].id);
+}
 
 function apagarPagina() {
     //Apagou a pagina:
@@ -508,20 +556,21 @@ function apagarPagina() {
     let col1 = document.createElement("div");
     col1.setAttribute("class", "col");
     col1.setAttribute("id", "col1");
-
-    let col2 = document.createElement("div");
-    col2.setAttribute("class", "col");
-    col2.setAttribute("id", "col2");
-
-    let col3 = document.createElement("div");
-    col3.setAttribute("class", "col");
-    col3.setAttribute("id", "col3");
-
+    /*
+        let col2 = document.createElement("div");
+        col2.setAttribute("class", "col");
+        col2.setAttribute("id", "col2");
+    
+        let col3 = document.createElement("div");
+        col3.setAttribute("class", "col");
+        col3.setAttribute("id", "col3");
+    */
 
     tagDeFora.appendChild(col1);
+    /*
     tagDeFora.appendChild(col2);
     tagDeFora.appendChild(col3);
-
+*/
     conteudoPagina.appendChild(tagDeFora);
 
 }
@@ -535,48 +584,96 @@ function showMensagens(idConta, idCaixa) {
     xhttp.open("GET", `http://www.henriquesantos.pro.br:8080/api/email/mensagens_email/${tokenString}/conta/${idConta}/caixa/${idCaixa}`, false);
     xhttp.send();
     let retorno = xhttp.responseText;
-    //retorno = JSON.parse(retorno);
-    console.log(JSON.stringify(retorno));
+    retorno = JSON.parse(retorno);
+    console.log(retorno);
     let col1 = document.getElementById('col1');
 
     let div = document.createElement("div");
-    div.setAttribute("class", "list-group");
+    div.setAttribute("class", "list-group-item");
     console.log("tamanho do retorno " + retorno.length);
 
     let accordion = document.getElementById("accordion");
-    accordion.innerHTML = "";
 
-    //Começa aqui:
-    
+    //Se não houver mensagem:
+    if (retorno.length == 0) {
+        accordion.innerHTML = "";
+        let ul = document.createElement("ul");
+        ul.setAttribute("class", "list-group");
 
+        let li = document.createElement("li");
+        li.setAttribute("class", "list-group-item disabled");
 
+        li.innerHTML = "<i>Caixa de mensagens vazia.</i>";
 
-    for (let c = 0; c < retorno.length; c++) {
-        let card = document.createElement("div");
-        card.setAttribute("class", "card");
-
-        let cardHeader = document.createElement("div");
-        cardHeader.setAttribute("class", "card-Header");
-
-        let mb = document.createElement("h5");
-        mb.setAttribute("class", "mb-0");
-
-        let btn = document.createElement("button");
-        btn.setAttribute("class", "btn btn-dark");
-        btn.setAttribute("type", "button");
-        btn.setAttribute("data-toggle", "collapse");
-        //btn.setAttribute("data-target", INSIRA O ID DA DIV AQUI COM O SHARP);
-        btn.setAttribute("aria-expanded", "true");
-        //btn.setAttribute("aria-controls", INSIRA O ID DA DIV AQUI SEM O SHARP);
-        btn.innerHTML = c.assunto;
-
-        mb.appendChild(btn);
-        cardHeader.appendChild(mb);
-        card.appendChild(cardHeader);
-        accordion.appendChild(card);
-        //http://www.henriquesantos.pro.br:8080/api/email/mensagens_email/${tokenString}/mensagem/${c.id}
-        
+        ul.appendChild(li);
+        accordion.appendChild(ul);
     }
+
+    else {
+        accordion.innerHTML = "";
+        for (let c = 0; c < retorno.length; c++) {
+            let card = document.createElement("div");
+            card.setAttribute("class", "card");
+
+            let cardHeader = document.createElement("div");
+            cardHeader.setAttribute("class", "card-Header");
+            cardHeader.setAttribute("id", `heading${retorno[c].id}`);
+
+            let mb = document.createElement("h5");
+            mb.setAttribute("class", "mb-0");
+
+            let btn = document.createElement("button");
+            if (c == 0) {
+                btn.setAttribute("class", "list-group-item list-group-item-action active fade");
+            }
+            else {
+                btn.setAttribute("class", "list-group-item list-group-item-action fade");
+            }
+            btn.setAttribute("class", "list-group-item list-group-item-action");
+            btn.setAttribute("type", "button");
+            btn.setAttribute("data-toggle", "collapse");
+            //INSIRA O ID DA DIVCOLLAPSE AQUI COM O SHARP
+            btn.setAttribute("data-target", `#collapse${retorno[c].id}`);
+
+            btn.setAttribute("aria-expanded", "false");
+
+            //INSIRA O ID DA DIVCOLLAPSE AQUI SEM O SHARP
+            btn.setAttribute("aria-controls", `collapse${retorno[c].id}`);
+            console.log(retorno[c].id);
+            btn.innerHTML = `<b>${retorno[c].assunto}</b>`;
+
+            let divCollapse = document.createElement("div");
+            divCollapse.setAttribute("id", `collapse${retorno[c].id}`);
+            divCollapse.setAttribute("class", "collapse");
+            divCollapse.setAttribute("aria-labelledby", `heading${retorno[c].id}`);
+            divCollapse.setAttribute("data-parent", "accordion");
+
+            let divBody = document.createElement("div");
+            divBody.setAttribute("class", "card-body");
+
+            divBody.innerHTML = retorno[c].corpo + "<br>";
+
+            let botaoApagar = document.createElement("button");
+            botaoApagar.setAttribute("class", "btn btn-outline-dark btn-sm");
+            botaoApagar.setAttribute("id", "botaoDeletarMensagem");
+            botaoApagar.setAttribute("onclick", `apagarEmail(token.token, ${contaSelecionada}, ${idCaixa}, ${retorno[c].id})`);
+            botaoApagar.setAttribute("data-target", "#myModal");
+            botaoApagar.innerHTML = "Excluir Mensagem";
+
+            divBody.appendChild(botaoApagar);
+
+            mb.appendChild(btn);
+            cardHeader.appendChild(mb);
+            card.appendChild(cardHeader);
+
+            divCollapse.appendChild(divBody);
+            card.appendChild(divCollapse);
+            accordion.appendChild(card);
+            //http://www.henriquesantos.pro.br:8080/api/email/mensagens_email/${tokenString}/mensagem/${c.id}
+
+        }
+    }
+
 
 
 	/*
@@ -694,12 +791,54 @@ enviarEmail.addEventListener("submit", function (e) {
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
 
-        //se a conta for criada:
         if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-            console.log('enviou!');
+            $('#enviarEmail').modal("hide");
+
+            $("#emailEnviado").modal();
+            setTimeout(function () {
+                $('#emailEnviado').modal('hide');
+            }, 1500);
+
             console.log(xhr.responseText);
         }
 
     }
     xhr.send(json);
 })
+
+let lorem = document.getElementById("loremIpsumLink");
+lorem.addEventListener("click", function (x) {
+    $('#modalCadastro').modal("hide");
+    $('#loremIpsum').modal();
+})
+
+function exibirFalhaLogin() {
+    $("#falhaLogin").modal();
+    setTimeout(function () {
+        $('#falhaLogin').modal('hide');
+    }, 1500);
+}
+
+
+function apagarEmail(stringToken, conta, idCaixa, idMensagem) {
+    let xhttp = new XMLHttpRequest();
+    console.log(stringToken);
+
+    xhttp.open("DELETE", `http://www.henriquesantos.pro.br:8080/api/email/mensagens_email/${token.token}/conta/${conta}/caixa/${idCaixa}/mensagem/${idMensagem}`, false);
+    xhttp.send();
+
+    let retorno = xhttp.responseText;
+    //retorno = JSON.parse(retorno);
+
+    $("emailDelete").modal();
+    setTimeout(function () {
+        $('emailDelete').modal('hide');
+    }, 1500);
+
+    console.log("Retorno do Delete: " + retorno);
+
+    showMensagens(conta, idCaixa);
+
+
+
+}
